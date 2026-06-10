@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7246e42815b263147919f0d589b66b5c
+guid: dc644130687b3204c819dfa72f610b01
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6709289274392347025
-    second: 450-4506725_hammer-bro-hammer-sprite-hd-png-download_0
+      213: -4646958898676375925
+    second: Hammerbro1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 450-4506725_hammer-bro-hammer-sprite-hd-png-download_0
+      name: Hammerbro1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 860
-        height: 571
+        x: 13
+        y: 10
+        width: 160
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 34}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f6e7188c3f0d3e2a0800000000000000
-      internalID: -6709289274392347025
+      spriteID: b8edd86908fa28fb0800000000000000
+      internalID: -4646958898676375925
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8be152d06e964804993c69921d41d942
+    spriteID: 8112a00f6f6c0e44db1397a885f3dabc
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      450-4506725_hammer-bro-hammer-sprite-hd-png-download_0: -6709289274392347025
+      Hammerbro1_0: -4646958898676375925
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

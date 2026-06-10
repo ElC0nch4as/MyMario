@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5b958255885f71f46b82b0bcb3c00dec
+guid: 9ffd1c23bb0ea9f4d9cda4a59199df2c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6825632438319863801
-    second: NES - Super Mario Bros. 3 - Enemies & Bosses - Enemies_0
+      213: -1517814747263520294
+    second: hammerbro2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,27 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NES - Super Mario Bros. 3 - Enemies & Bosses - Enemies_0
+      name: hammerbro2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 735
-        height: 1731
+        x: 7
+        y: 12
+        width: 160
+        height: 240
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline:
-      - - {x: 367.5, y: 865.5}
-        - {x: -367.5, y: 865.5}
-        - {x: -367.5, y: -865.5}
-        - {x: 367.5, y: -865.5}
+      outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 708af8a067b7641a0800000000000000
-      internalID: -6825632438319863801
+      spriteID: ad132827783afeae0800000000000000
+      internalID: -1517814747263520294
       vertices: []
       indices: 
       edges: []
@@ -142,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 516c42273d866494fa287199a57c372d
+    spriteID: 7080c7c988ed39c478dbc1b7f2adb0de
     internalID: 0
     vertices: []
     indices: 
@@ -152,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      NES - Super Mario Bros. 3 - Enemies & Bosses - Enemies_0: -6825632438319863801
+      hammerbro2_0: -1517814747263520294
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -32,10 +32,22 @@ public class QuestionBlock : MonoBehaviour, IHeadHittable
         DoBump();
 
         Vector3 p = transform.position + Vector3.up * 0.8f;
-        if (givesMushroom && mushroomPrefab != null) Instantiate(mushroomPrefab, p, Quaternion.identity);
-        else if (coinPrefab != null) Instantiate(coinPrefab, p, Quaternion.identity);
+        if (givesMushroom && mushroomPrefab != null)
+        {
+            Instantiate(mushroomPrefab, p, Quaternion.identity);
 
-        if (_sr != null && usedSprite != null) _sr.sprite = usedSprite;
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayFungusBlock();
+        }
+        else if (coinPrefab != null)
+        {
+            Instantiate(coinPrefab, p, Quaternion.identity);
+
+            if (_sr != null && usedSprite != null) _sr.sprite = usedSprite;
+
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayCoin();
+        }
     }
 
     private void DoBump()

@@ -14,6 +14,7 @@ public class EnemyWalker : MonoBehaviour
     private bool dead;
 
     public bool IsDead => dead;
+    public int Direction => dir;
 
     private void Awake()
     {

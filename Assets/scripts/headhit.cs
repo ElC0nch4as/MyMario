@@ -4,11 +4,12 @@ public class HeadHit : MonoBehaviour
 {
     [Header("Head Hit")]
     [SerializeField] private Transform headPoint;
-    [SerializeField] private float checkDistance = 0.15f;
+    [SerializeField] private float checkDistance = 0.25f;
     [SerializeField] private LayerMask blockMask;
     [SerializeField] private float minUpVelocity = 0.2f;
 
     private Rigidbody2D rb;
+    private Collider2D lastBlockHit;
 
     private void Awake()
     {
@@ -18,27 +19,25 @@ public class HeadHit : MonoBehaviour
     private void FixedUpdate()
     {
         if (rb == null || headPoint == null) return;
-        if (rb.linearVelocityY < minUpVelocity) return;
 
         RaycastHit2D hit = Physics2D.Raycast(headPoint.position, Vector2.up, checkDistance, blockMask);
-        if (!hit) return;
 
-        var tileSystem = hit.collider.GetComponentInParent<TilemapBlockSystem>();
-        if (tileSystem != null)
+        if (!hit)
         {
-            tileSystem.TryHitAtWorldPoint(hit.point);
+            lastBlockHit = null;
             return;
         }
 
-        var hittable = hit.collider.GetComponent<IHeadHittable>();
+        if (rb.linearVelocity.y < minUpVelocity) return;
+
+        if (hit.collider == lastBlockHit) return;
+
+        lastBlockHit = hit.collider;
+
+        IHeadHittable hittable = hit.collider.GetComponent<IHeadHittable>();
         if (hittable != null)
         {
             hittable.OnHeadHit(this);
-        }
-
-        if (hit)
-        {
-            Debug.Log("Pegó a: " + hit.collider.name);
         }
     }
 }

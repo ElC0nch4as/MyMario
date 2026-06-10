@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EnemyHitTrigger : MonoBehaviour
 {
@@ -6,10 +7,11 @@ public class EnemyHitTrigger : MonoBehaviour
     [SerializeField] private EnemyWalker enemy;
     [SerializeField] private Collider2D enemyCollider;
     [SerializeField] private SpriteRenderer visual;
+    [SerializeField] private Animator animator;
 
     [Header("Death")]
     [SerializeField] private Sprite deadSprite;
-    [SerializeField] private float destroyDelay = 0.25f;
+    [SerializeField] private float destroyDelay = 0.6f;
 
     [Header("Stomp")]
     [SerializeField] private float stompBounceForce = 10f;
@@ -27,6 +29,9 @@ public class EnemyHitTrigger : MonoBehaviour
 
         if (visual == null)
             visual = GetComponentInParent<SpriteRenderer>();
+
+        if (animator == null)
+            animator = GetComponentInParent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -56,13 +61,26 @@ public class EnemyHitTrigger : MonoBehaviour
     {
         dead = true;
 
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayGoombaFlat();
+
         if (enemy != null)
             enemy.Die();
 
         marioRb.linearVelocity = new Vector2(marioRb.linearVelocity.x, stompBounceForce);
 
+        if (animator != null)
+            animator.enabled = false;
+
         if (visual != null && deadSprite != null)
             visual.sprite = deadSprite;
+
+        if (enemyCollider != null)
+            enemyCollider.enabled = false;
+
+        Collider2D myTrigger = GetComponent<Collider2D>();
+        if (myTrigger != null)
+            myTrigger.enabled = false;
 
         Destroy(transform.root.gameObject, destroyDelay);
     }

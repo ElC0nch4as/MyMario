@@ -69,6 +69,16 @@ public class KoopaHitTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.transform.root == transform.root) return;
+
+        ShellTarrjet enemyTarget = other.GetComponentInParent<ShellTarrjet>();
+
+        if (enemyTarget != null)
+        {
+            HandleEnemyInteraction(enemyTarget);
+            return;
+        }
+
         VIdaMario marioHealth = other.GetComponentInParent<VIdaMario>();
         if (marioHealth == null) return;
 
@@ -111,6 +121,22 @@ public class KoopaHitTrigger : MonoBehaviour
         }
     }
 
+    private void HandleEnemyInteraction(ShellTarrjet enemyTarget)
+    {
+        if (state == KoopaState.ShellMoving)
+        {
+            enemyTarget.KillByShell();
+            return;
+        }
+
+        if (state == KoopaState.ShellIdle)
+        {
+            int dir = enemyTarget.GetMoveDirection(transform.root.position.x);
+            StartMovingShell(dir);
+            return;
+        }
+    }
+
     private void TurnIntoShell(Rigidbody2D marioRb)
     {
         state = KoopaState.ShellIdle;
@@ -131,18 +157,30 @@ public class KoopaHitTrigger : MonoBehaviour
 
     private void KickShell(Rigidbody2D marioRb)
     {
-        state = KoopaState.ShellMoving;
-
         float marioDirection = marioRb.linearVelocity.x;
+
+        int dir;
 
         if (Mathf.Abs(marioDirection) > 0.1f)
         {
-            shellDir = marioDirection > 0 ? 1 : -1;
+            dir = marioDirection > 0 ? 1 : -1;
         }
         else
         {
-            shellDir = marioRb.transform.position.x < transform.root.position.x ? 1 : -1;
+            dir = marioRb.transform.position.x < transform.root.position.x ? 1 : -1;
         }
+
+        StartMovingShell(dir);
+    }
+
+    private void StartMovingShell(int dir)
+    {
+        state = KoopaState.ShellMoving;
+
+        shellDir = dir;
+
+        if (shellDir == 0)
+            shellDir = 1;
 
         rb.linearVelocity = new Vector2(shellDir * shellSpeed, rb.linearVelocity.y);
     }

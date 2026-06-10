@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class CoinBlock : MonoBehaviour, IHeadHittable
 {
@@ -8,10 +9,10 @@ public class CoinBlock : MonoBehaviour, IHeadHittable
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Transform spawnPoint;
 
-    [Header("After used")]
+    [Header("Used")]
     [SerializeField] private Sprite usedSprite;
 
-    [Header("Bump FX")]
+    [Header("Bump")]
     [SerializeField] private float bumpHeight = 0.12f;
     [SerializeField] private float bumpTime = 0.08f;
 
@@ -46,6 +47,9 @@ public class CoinBlock : MonoBehaviour, IHeadHittable
         if (coinPrefab == null) return;
         Vector3 p = (spawnPoint != null) ? spawnPoint.position : transform.position + Vector3.up * 0.8f;
         Instantiate(coinPrefab, p, Quaternion.identity);
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayCoin();
     }
 
     private void SetUsed()
