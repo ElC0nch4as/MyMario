@@ -17,6 +17,9 @@ public class Flag : MonoBehaviour
     [Header("End")]
     [SerializeField] private float disappearDelay = 0.2f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mainCameraMusic;
+
     private bool activated;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -49,6 +52,9 @@ public class Flag : MonoBehaviour
         float originalGravity = 3f;
 
         mario.SetControlsEnabled(false);
+
+        if (mainCameraMusic != null)
+            mainCameraMusic.Stop();
 
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlayFlag();

@@ -31,6 +31,9 @@ public class VIdaMario : MonoBehaviour
     [SerializeField] private float damageCooldown = 2f;
     [SerializeField] private float blinkSpeed = 0.12f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource mainCameraMusic;
+
     private bool invincible;
     private bool dead;
 
@@ -109,6 +112,9 @@ public class VIdaMario : MonoBehaviour
         invincible = true;
 
         Time.timeScale = 0f;
+
+        if (mainCameraMusic != null)
+            mainCameraMusic.Stop();
 
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlayLose();
